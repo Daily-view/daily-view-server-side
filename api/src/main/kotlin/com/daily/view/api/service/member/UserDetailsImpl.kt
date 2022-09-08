@@ -1,4 +1,4 @@
-package com.daily.view.api.configuration.service.member
+package com.daily.view.api.service.member
 
 import com.daily.view.domain.entity.member.Members
 import org.springframework.security.core.GrantedAuthority

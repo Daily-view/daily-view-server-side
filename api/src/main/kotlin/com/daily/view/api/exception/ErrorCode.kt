@@ -1,4 +1,4 @@
-package com.daily.view.api.configuration.exception
+package com.daily.view.api.exception
 
 enum class ErrorCode {
     EMAIL_IS_DUPLICATED,

@@ -1,4 +1,4 @@
-package com.daily.view.api.configuration.service.fb
+package com.daily.view.api.service.fb
 
 import com.daily.view.api.convertPublicURL
 import com.google.firebase.cloud.StorageClient

@@ -1,4 +1,4 @@
-package com.daily.view.api.configuration.service.auth
+package com.daily.view.api.service.auth
 
 import com.daily.view.domain.entity.redis.MemberRefreshToken
 import com.daily.view.domain.entity.redis.MemberRefreshTokenRepository
