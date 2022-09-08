@@ -1,0 +1,29 @@
+type DirectMessage {
+    id: ID!
+    """발신 member ID"""
+    sender: ID!
+    """수신 member ID"""
+    receiver: ID!
+    message: String
+    photo: String
+    createdAt: DateTime
+}
+
+input SendMessageInput {
+    """발신 member ID"""
+    sender: ID!
+    """수신 member ID"""
+    receiver: ID!
+    message: String
+    photo: String
+}
+
+type MessageEvent {
+    id: ID!
+    action: MessageAction
+}
+
+enum MessageAction {
+    DIRECT,
+    GROUP
+}

@@ -1,0 +1,13 @@
+spring:
+  graphql:
+    schema:
+      printer:
+        enabled: true
+      locations: classpath:graphql/*
+    path: /graphql
+    graphiql:
+      enabled: true
+
+logging:
+  level:
+    root: INFO
