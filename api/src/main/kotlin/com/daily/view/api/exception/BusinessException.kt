@@ -1,4 +1,4 @@
-package com.daily.view.api.configuration.exception
+package com.daily.view.api.exception
 
 open class BusinessException(
     open val errorCode: ErrorCode,

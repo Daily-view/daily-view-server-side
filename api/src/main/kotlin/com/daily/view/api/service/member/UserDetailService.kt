@@ -1,7 +1,7 @@
-package com.daily.view.api.configuration.service.member
+package com.daily.view.api.service.member
 
-import com.daily.view.api.configuration.exception.BusinessException
-import com.daily.view.api.configuration.exception.ErrorCode
+import com.daily.view.api.exception.BusinessException
+import com.daily.view.api.exception.ErrorCode
 import com.daily.view.domain.entity.member.MemberRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
