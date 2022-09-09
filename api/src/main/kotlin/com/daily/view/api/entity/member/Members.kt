@@ -26,9 +26,6 @@ class Members(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    @Column(nullable = false, columnDefinition = "TINYINT(1)")
-    var delete: Boolean = false
-
     var lastLoginAt: OffsetDateTime? = null
 
     @OneToOne(mappedBy = "member", cascade = [CascadeType.ALL], orphanRemoval = true)
