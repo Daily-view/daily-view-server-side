@@ -1,4 +1,4 @@
-package com.daily.view.api.dto
+package com.daily.view.api.dto.member
 
 data class CreateMemberInput(
     val email: String,
