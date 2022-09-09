@@ -1,2 +1,2 @@
 rootProject.name = "view"
-include("api", "domain")
+include("api")
