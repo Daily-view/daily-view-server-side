@@ -1,0 +1,12 @@
+scalar DateTime
+
+type Query {
+    sayHello: String!
+}
+
+type Mutation {
+    createMember(input: CreateMemberInput!): Boolean
+    login(input: LoginInput!): AuthToken
+    reissue: AuthToken
+    sendMessage(input: SendMessageInput!): Boolean
+}

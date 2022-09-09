@@ -1,9 +1,16 @@
+server:
+  http2:
+    enabled: true
+  error:
+    include-message: always
+  port: 8443
+
 spring:
   graphql:
     schema:
       printer:
         enabled: true
-      locations: classpath:graphql/*
+      locations: classpath:graphql/**
     path: /graphql
     graphiql:
       enabled: true
@@ -12,5 +19,9 @@ logging:
   level:
     root: INFO
 
+app:
+  firebase-configuration-file: ./serviceAccountKey.json
+  firebase-bucket: dark-room-84532.appspot.com
+
 jwt:
-  secret: "qwertyuiopasdfghjklzxcvbnmqwerty"
+  key: 3f0dc72659384fce9246a9d8af978ee23f0dc72659384fce9246a9d8af978ee23f0dc72659384fce9246a9d8af978ee2
