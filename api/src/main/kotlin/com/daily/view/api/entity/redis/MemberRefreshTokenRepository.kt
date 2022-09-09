@@ -1,6 +1,5 @@
 package com.daily.view.api.entity.redis
 
-import com.daily.view.api.entity.redis.MemberRefreshToken
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 

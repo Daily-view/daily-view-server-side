@@ -10,16 +10,17 @@ class ScalarConfig {
 
     @Bean
     fun configure(): RuntimeWiringConfigurer {
-        return RuntimeWiringConfigurer { c -> c
-            .scalar(ExtendedScalars.GraphQLLong)
-            .scalar(ExtendedScalars.GraphQLByte)
-            .scalar(ExtendedScalars.GraphQLBigDecimal)
-            .scalar(ExtendedScalars.GraphQLBigInteger)
-            .scalar(ExtendedScalars.GraphQLShort)
-            .scalar(ExtendedScalars.Date)
-            .scalar(ExtendedScalars.DateTime)
-            .scalar(ExtendedScalars.LocalTime)
-            .scalar(ExtendedScalars.Object)
+        return RuntimeWiringConfigurer { c ->
+            c
+                .scalar(ExtendedScalars.GraphQLLong)
+                .scalar(ExtendedScalars.GraphQLByte)
+                .scalar(ExtendedScalars.GraphQLBigDecimal)
+                .scalar(ExtendedScalars.GraphQLBigInteger)
+                .scalar(ExtendedScalars.GraphQLShort)
+                .scalar(ExtendedScalars.Date)
+                .scalar(ExtendedScalars.DateTime)
+                .scalar(ExtendedScalars.LocalTime)
+                .scalar(ExtendedScalars.Object)
         }
     }
 }
