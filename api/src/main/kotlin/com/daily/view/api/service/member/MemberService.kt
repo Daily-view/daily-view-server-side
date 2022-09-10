@@ -9,6 +9,7 @@ import com.daily.view.api.exception.BusinessException
 import com.daily.view.api.exception.ErrorCode
 import com.daily.view.api.service.auth.JwtDto
 import com.daily.view.api.service.auth.RefreshTokenService
+import java.security.Principal
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -46,5 +47,14 @@ class MemberService(
         encoder.encode(member.password).also { member.password = it }
         memberRepository.save(member)
         return Mono.just(true)
+    }
+
+    @Transactional(readOnly = true)
+    fun findByPrincipal(principal: Principal): Members {
+        val email = principal.name
+        return memberRepository.findByEmail(email) ?: throw BusinessException(
+            ErrorCode.INVALID_JWT_TOKEN,
+            "jwt token 을 확인해주세요"
+        )
     }
 }

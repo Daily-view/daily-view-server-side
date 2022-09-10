@@ -1,7 +1,7 @@
 scalar DateTime
 
 type Query {
-    sayHello: String!
+    me: Member!
 }
 
 type Mutation {

@@ -30,7 +30,7 @@ class JwtSupport(
         val builder = Jwts.builder()
             .setSubject(memberEmail)
             .setIssuedAt(Date.from(Instant.now()))
-            .setExpiration(Date.from(Instant.now().plus(15, ChronoUnit.MINUTES)))
+            .setExpiration(Date.from(Instant.now().plus(1, ChronoUnit.DAYS)))
             .signWith(jwtKey)
         return BearerToken(builder.compact())
     }

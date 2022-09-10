@@ -2,6 +2,9 @@ type Member {
     id: ID!
     email: String!
     nickname: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+    lastLoginAt: DateTime
 }
 
 type AuthToken {
