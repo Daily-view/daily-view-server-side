@@ -3,7 +3,6 @@ package com.daily.view.api.fetcher
 import com.daily.view.api.dto.member.AuthToken
 import com.daily.view.api.dto.member.CreateMemberInput
 import com.daily.view.api.dto.member.LoginInput
-import com.daily.view.api.service.auth.JwtDto
 import com.daily.view.api.service.member.MemberService
 import org.springframework.graphql.data.method.annotation.Argument
 import org.springframework.graphql.data.method.annotation.MutationMapping
