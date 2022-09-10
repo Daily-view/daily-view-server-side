@@ -35,7 +35,6 @@ dependencies {
     implementation("io.netty:netty-all:4.1.80.Final")
 
     // jwt
-    implementation("com.auth0:auth0:1.42.0")
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")

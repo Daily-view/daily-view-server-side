@@ -4,7 +4,6 @@ import com.daily.view.api.exception.BusinessException
 import com.daily.view.api.exception.ErrorCode
 import kotlinx.coroutines.reactor.awaitSingleOrNull
 import kotlinx.coroutines.reactor.mono
-import org.apache.http.auth.AUTH
 import org.apache.http.auth.AuthenticationException
 import org.springframework.security.authentication.ReactiveAuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
@@ -38,4 +37,4 @@ class JwtAuthenticationManager(
     }
 }
 
-class InvalidBearerToken(message: String?): AuthenticationException(message)
+class InvalidBearerToken(message: String?) : AuthenticationException(message)
