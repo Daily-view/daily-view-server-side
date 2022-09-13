@@ -26,6 +26,9 @@ class MemberMutationFetcher(
         context: GraphQLContext
     ): Mono<AuthToken> {
         return memberService.login(input)
-            .flatMap { Mono.just(AuthToken(it.tokenType, it.token)) }
+            .flatMap {
+                context.put("token", it.token)
+                Mono.just(AuthToken(it.tokenType, it.token))
+            }
     }
 }
