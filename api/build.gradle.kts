@@ -32,22 +32,24 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-    implementation("io.netty:netty-all:4.1.80.Final")
+    implementation("io.netty:netty-all:4.1.81.Final")
 
     // jwt
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
     implementation("com.google.firebase:firebase-admin:9.0.0")
-
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.graphql:spring-graphql-test")
 
     // domian
+    runtimeOnly("dev.miku:r2dbc-mysql")
+    runtimeOnly("org.mariadb:r2dbc-mariadb")
+    runtimeOnly("mysql:mysql-connector-java")
+    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
     api("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
-    runtimeOnly("mysql:mysql-connector-java")
     api("com.querydsl:querydsl-jpa:5.0.0")
     kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
 }

@@ -26,35 +26,46 @@ class MemberService(
     @Transactional(readOnly = true)
     fun login(input: LoginInput): Mono<JwtDto> {
         val member = memberRepository.findByEmail(input.email)
-        member?.let {
-            if (encoder.matches(input.password, it.password)) {
+        return member.flatMap {
+            if (it != null && encoder.matches(input.password, it.password)) {
                 val bearerToken = jwtSupport.generate(input.email)
-                return Mono.just(JwtDto(tokenType = "Bearer", token = bearerToken.value, refreshToken = "1234"))
+                Mono.just(JwtDto(tokenType = "Bearer", token = bearerToken.value, refreshToken = "1234"))
+            } else {
+                Mono.error(BusinessException(ErrorCode.CHECK_YOUR_ACCOUNT, "계정을 확인해주세요"))
             }
         }
-        throw BusinessException(ErrorCode.CHECK_YOUR_ACCOUNT, "계정을 확인해주세요")
     }
 
     @Transactional
     fun create(input: CreateMemberInput): Mono<Boolean> {
-        if (memberRepository.existsByEmail(input.email)) {
-            throw BusinessException(ErrorCode.EMAIL_IS_DUPLICATED, "이메일이 중복입니다. email: ${input.email}")
-        }
-        if (memberRepository.existsByNickname(input.nickname)) {
-            throw BusinessException(ErrorCode.NICKNAME_IS_DUPLICATED, "닉네임이 중복입니다. nickname: ${input.nickname}")
-        }
-        val member = Members(email = input.email, nickname = input.nickname, password = input.password)
-        encoder.encode(member.password).also { member.password = it }
-        memberRepository.save(member)
-        return Mono.just(true)
+        return memberRepository.existsByEmail(input.email).flatMap { exists ->
+            if (exists) {
+                Mono.error(BusinessException(ErrorCode.EMAIL_IS_DUPLICATED, "이메일이 중복입니다. email: ${input.email}"))
+            } else {
+                memberRepository.existsByNickname(input.nickname)
+            }
+        }.flatMap { exists ->
+            if (exists) {
+                Mono.error(
+                    BusinessException(
+                        ErrorCode.NICKNAME_IS_DUPLICATED, "닉네임이 중복입니다. nickname: ${input.nickname}"
+                    )
+                )
+            } else {
+                val member = Members(email = input.email, nickname = input.nickname, password = input.password)
+                encoder.encode(member.password).also { member.password = it }
+                memberRepository.save(member)
+            }
+        }.flatMap { Mono.just(true) }
     }
 
     @Transactional(readOnly = true)
-    fun findByPrincipal(principal: Principal): Members {
+    fun findByPrincipal(principal: Principal): Mono<Members> {
         val email = principal.name
-        return memberRepository.findByEmail(email) ?: throw BusinessException(
-            ErrorCode.INVALID_JWT_TOKEN,
-            "jwt token 을 확인해주세요"
-        )
+        return memberRepository.findByEmail(email).doOnNext { member ->
+            if (member == null) {
+                throw BusinessException(ErrorCode.INVALID_JWT_TOKEN, "jwt token 을 확인해주세요")
+            }
+        }
     }
 }
