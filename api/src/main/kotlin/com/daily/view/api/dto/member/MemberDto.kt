@@ -1,7 +1,6 @@
 package com.daily.view.api.dto.member
 
 import java.time.OffsetDateTime
-import java.util.LongSummaryStatistics
 
 data class MemberDto(
     val id: Long,

@@ -15,4 +15,4 @@ fun String.convertPublicURL(): String =
     this.replace("https://storage.googleapis.com/download/storage/v1", "https://firebasestorage.googleapis.com/v0")
 
 fun Members.toDto() =
-     MemberDto(this.id!!, this.nickname, this.email, this.lastLoginAt, this.createdAt, this.updatedAt)
+    MemberDto(this.id!!, this.nickname, this.email, this.lastLoginAt, this.createdAt, this.updatedAt)
