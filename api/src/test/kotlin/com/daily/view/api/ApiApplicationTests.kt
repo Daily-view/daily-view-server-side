@@ -1,12 +1,14 @@
 package com.daily.view.api
 
-import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
+import io.kotest.core.spec.style.BehaviorSpec
 
-@SpringBootTest
-class ApiApplicationTests {
+class ApiApplicationTests : BehaviorSpec({
 
-    @Test
-    fun contextLoads() {
+    Given("a test") {
+        When("I run it") {
+            Then("it should pass") {
+                assert(true)
+            }
+        }
     }
-}
+})
