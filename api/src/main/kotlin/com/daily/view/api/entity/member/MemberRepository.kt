@@ -1,14 +1,15 @@
 package com.daily.view.api.entity.member
 
-import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.repository.reactive.ReactiveCrudRepository
 import org.springframework.stereotype.Repository
+import reactor.core.publisher.Mono
 
 @Repository
-interface MemberRepository : JpaRepository<Members, Long> {
+interface MemberRepository : ReactiveCrudRepository<Members, Long> {
 
-    fun existsByEmail(email: String): Boolean
+    fun existsByEmail(email: String): Mono<Boolean>
 
-    fun existsByNickname(nickname: String): Boolean
+    fun existsByNickname(nickname: String): Mono<Boolean>
 
-    fun findByEmail(email: String): Members?
+    fun findByEmail(email: String): Mono<Members>
 }
