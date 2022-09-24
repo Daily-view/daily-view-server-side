@@ -26,13 +26,13 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-graphql")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("com.graphql-java:graphql-java-extended-scalars:18.1")
+    implementation("com.graphql-java:graphql-java-extended-scalars:19.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-    implementation("io.netty:netty-all:4.1.80.Final")
+    implementation("io.netty:netty-all:4.1.82.Final")
 
     // jwt
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
