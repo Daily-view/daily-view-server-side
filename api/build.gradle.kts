@@ -43,11 +43,8 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.graphql:spring-graphql-test")
 
-    // domian
-    runtimeOnly("dev.miku:r2dbc-mysql")
-    runtimeOnly("org.mariadb:r2dbc-mariadb")
+    // domain
     runtimeOnly("mysql:mysql-connector-java")
-    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
     api("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     api("com.querydsl:querydsl-jpa:5.0.0")

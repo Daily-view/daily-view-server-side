@@ -14,5 +14,5 @@ class MemberQueryFetcher(
 ) {
     @QueryMapping
     fun me(principal: Principal): Mono<MemberDto> =
-        memberService.findByPrincipal(principal).map { it.toDto() }
+        Mono.just(memberService.findByPrincipal(principal).toDto())
 }
