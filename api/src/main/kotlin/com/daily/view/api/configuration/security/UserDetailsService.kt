@@ -14,9 +14,7 @@ class UserDetailsService(
 
     override fun findByUsername(username: String?): Mono<UserDetails> {
         if (username == null) return Mono.empty()
-        return memberRepository.findByEmail(username).flatMap { member ->
-            if (member == null) Mono.empty()
-            else Mono.just(UserDetailsImpl(member))
-        }
+        val member = memberRepository.findByEmail(username) ?: return Mono.empty()
+        return Mono.just(UserDetailsImpl(member))
     }
 }

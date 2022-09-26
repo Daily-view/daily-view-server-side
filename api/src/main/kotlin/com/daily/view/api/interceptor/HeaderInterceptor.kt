@@ -13,11 +13,13 @@ import java.time.Duration
 class HeaderInterceptor : WebGraphQlInterceptor {
     override fun intercept(request: WebGraphQlRequest, chain: WebGraphQlInterceptor.Chain): Mono<WebGraphQlResponse> {
         return chain.next(request).doOnNext { response ->
-            var value: String = response.executionInput.graphQLContext.get("token")
-            var cookie = ResponseCookie.from("token", value)
-                .maxAge(Duration.ofDays(1L))
-                .build()
-            response.responseHeaders.add(HttpHeaders.SET_COOKIE, cookie.toString())
+            var value: String? = response.executionInput.graphQLContext.get("token")
+            if (value != null) {
+                var cookie = ResponseCookie.from("token", value)
+                    .maxAge(Duration.ofDays(1L))
+                    .build()
+                response.responseHeaders.add(HttpHeaders.SET_COOKIE, cookie.toString())
+            }
         }
     }
 }

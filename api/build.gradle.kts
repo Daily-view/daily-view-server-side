@@ -1,5 +1,9 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
+tasks.withType<BootJar> {
+    mainClass.set("com.daily.view.api.ApiApplication")
+}
+
 group = "com.daily.view"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -26,13 +30,13 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-graphql")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("com.graphql-java:graphql-java-extended-scalars:18.1")
+    implementation("com.graphql-java:graphql-java-extended-scalars:19.0")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
-    implementation("io.netty:netty-all:4.1.81.Final")
+    implementation("io.netty:netty-all:4.1.82.Final")
 
     // jwt
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
@@ -43,11 +47,8 @@ dependencies {
     testImplementation("io.projectreactor:reactor-test")
     testImplementation("org.springframework.graphql:spring-graphql-test")
 
-    // domian
-    runtimeOnly("dev.miku:r2dbc-mysql")
-    runtimeOnly("org.mariadb:r2dbc-mariadb")
+    // domain
     runtimeOnly("mysql:mysql-connector-java")
-    implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
     api("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     api("com.querydsl:querydsl-jpa:5.0.0")

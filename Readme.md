@@ -14,5 +14,9 @@ http://localhost:9000/graphiql
 ## Lint format
 - make clean_up
 
+## Local start
+cd tools && docker-compose up -d
+cd.. && ../gradlew bootRun --args='--spring.profiles.active=local'
+
 ## ERD
 ![DB-ERD](https://user-images.githubusercontent.com/70758906/185735149-1b7d2ec1-6c12-48a4-bd8f-4ea3fa1357d1.png)
