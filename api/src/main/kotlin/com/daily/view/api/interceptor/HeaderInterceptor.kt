@@ -16,8 +16,8 @@ class HeaderInterceptor : WebGraphQlInterceptor {
             var value: String? = response.executionInput.graphQLContext.get("token")
             if (value != null) {
                 var cookie = ResponseCookie.from("token", value)
-                        .maxAge(Duration.ofDays(1L))
-                        .build()
+                    .maxAge(Duration.ofDays(1L))
+                    .build()
                 response.responseHeaders.add(HttpHeaders.SET_COOKIE, cookie.toString())
             }
         }
