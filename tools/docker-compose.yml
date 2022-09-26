@@ -19,7 +19,7 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_DATABASE=daily_view
-      - MYSQL_USER=root
+      - MYSQL_USER=jongyun
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=password
     volumes:

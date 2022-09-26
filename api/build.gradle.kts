@@ -1,5 +1,9 @@
 import org.springframework.boot.gradle.tasks.bundling.BootJar
 
+tasks.withType<BootJar> {
+    mainClass.set("com.daily.view.api.ApiApplication")
+}
+
 group = "com.daily.view"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
